@@ -1,13 +1,27 @@
 #!/usr/bin/env bash
-# Installs nginx and sets up a custom "Hello World!" homepage
+# Install nginx and serve 'Hello World!' on port 80 without using systemctl
 
-# Install nginx
+set -e
+
 apt-get update -y
 apt-get install nginx -y
 
-# Set custom HTML content
+# Overwrite default index files with plain 'Hello World!' text
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Hello World!" > /var/www/html/index.html
 
-# Start nginx (without using systemctl)
-service nginx start
+# Restart nginx without systemctl
+service nginx restart || service nginx start
+
+
+
+
+
+
+
+
+
+
+
+
 
