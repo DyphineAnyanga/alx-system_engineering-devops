@@ -1,17 +1,34 @@
 #!/usr/bin/env bash
-# Install nginx and serve 'Hello World!' on port 80 without using systemctl
+# Install nginx and ensure it serves 'Hello World!' on port 80 without systemctl
 
 set -e
 
+# Update package index
 apt-get update -y
+
+# Install nginx
 apt-get install nginx -y
 
-# Overwrite default index files with plain 'Hello World!' text
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-echo "Hello World!" > /var/www/html/index.html
+# Overwrite the index file with plain text response
+echo 'Hello World!' > /var/www/html/index.html
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 
-# Restart nginx without systemctl
-service nginx restart || service nginx start
+# Start nginx without systemctl
+service nginx start || service nginx restart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
